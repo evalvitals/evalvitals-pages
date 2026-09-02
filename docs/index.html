@@ -474,10 +474,10 @@
 
   /* ---- pick-chips: a wrapped row of small tags, some picked, some not ---- */
   .pick-chips-v3{display:flex;flex-wrap:wrap;gap:.38rem;margin-top:.7rem;}
-  .pick-chips-v3 span{padding:.28rem .55rem;border-radius:999px;font-family:var(--font-mono);font-size:.64rem;border:1px solid var(--border);color:var(--text-muted);background:var(--surface);white-space:nowrap;}
+  .pick-chips-v3 span{padding:.28rem .55rem;border-radius:999px;font-family:var(--font-mono);font-size:.64rem;border:1px solid var(--border);color:var(--text-muted);background:var(--surface);overflow-wrap:break-word;max-width:100%;}
   .pick-chips-v3 span.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-ink);font-weight:600;}
-  .mode-pick-v3{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:.7rem;}
-  .mode-pick-v3 span{padding:.4rem .5rem;border:1px solid var(--border);border-radius:6px;text-align:center;color:var(--text-muted);}
+  .mode-pick-v3{display:grid;gap:.3rem;margin-top:.7rem;}
+  .mode-pick-v3 span{display:block;padding:.35rem .5rem;border:1px solid var(--border);border-radius:6px;color:var(--text-muted);}
   .mode-pick-v3 b{display:block;font-family:var(--font-mono);font-size:.72rem;}
   .mode-pick-v3 small{display:block;font-size:.6rem;margin-top:.1rem;}
   .mode-pick-v3 .chosen{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-ink);}
