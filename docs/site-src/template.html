@@ -460,6 +460,31 @@
   .vb-cap{margin-top:.7rem;font-size:.82rem;color:var(--text-secondary);}
   .vb-cap b{color:var(--text-primary);}
 
+  /* ============ GAINS CHART (before/after task accuracy, by model & modality) ============
+     Paired-dot ("dumbbell") rows on a literal 0-100 scale — before and after are
+     both magnitudes, so the gap itself, not just its label, has to read as the
+     story. Brand blue marks "after" (the method's own accent); before stays
+     neutral gray. Confirmed/refuted green-red is reserved for held-out verdicts
+     elsewhere on this page, not reused here for "good news." */
+  .gains-chart{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:1.3rem 1.4rem 1.5rem;margin-top:1.8rem;}
+  .gains-legend{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.3rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.72rem;color:var(--text-secondary);}
+  .gains-legend .lg{display:flex;align-items:center;gap:.5em;}
+  .gains-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .gains-legend i.before{background:var(--border-strong);}
+  .gains-legend i.after{background:var(--brand);}
+  .gains-group+.gains-group{margin-top:1.3rem;padding-top:1.2rem;border-top:1px dashed var(--border);}
+  .gains-group-name{font-family:var(--font-head);font-size:1.02rem;margin-bottom:.5rem;}
+  .gr-row{display:grid;grid-template-columns:3rem 1fr auto;align-items:center;gap:1rem;padding-block:.5rem;}
+  .gr-row .type{font-family:var(--font-mono);font-weight:700;font-size:.76rem;color:var(--text-muted);}
+  .gr-track{position:relative;height:2px;background:var(--surface-2);border-radius:2px;}
+  .gr-connect{position:absolute;top:50%;height:2px;background:var(--border-strong);transform:translateY(-50%);border-radius:2px;}
+  .gr-dot{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border-strong);}
+  .gr-dot.before{background:var(--border-strong);box-shadow:none;}
+  .gr-dot.after{background:var(--brand);box-shadow:none;}
+  .gr-val{font-family:var(--font-mono);font-size:.75rem;color:var(--text-secondary);white-space:nowrap;text-align:right;}
+  .gr-val b{color:var(--brand-ink);font-weight:600;}
+  @media (max-width:640px){ .gr-row{grid-template-columns:2.6rem 1fr;} .gr-val{grid-column:1 / -1;text-align:left;padding-left:2.6rem;margin-top:.25rem;} }
+
   /* ============ LADDER ============ */
   .ladder{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem;}
   .rung{display:grid;grid-template-columns:3.2rem 1fr auto;gap:1rem;align-items:center;border:1px solid var(--border);border-radius:10px;background:var(--surface);padding:.9rem 1.1rem;}
@@ -959,11 +984,46 @@
       </div>
     </section>
 
+    <!-- ============ GAINS ============ -->
+    <section id="gains">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">04 · Proven across model families</span>
+          <h2>Every model gains. Every modality.</h2>
+          <p>Task accuracy before and after one full EvalVitals repair pass, run against four current model families across language, vision and audio inputs. Every cell moved the right direction — from +1.4pp on the smallest gain to +10.9pp on the largest.</p>
+        </div>
+
+        <div class="gains-chart" role="img" aria-label="Before-to-after task accuracy for Gemini, Qwen, Gemma and Nemotron across LLM, VLM and ALM modalities: every pairing improved after one EvalVitals repair pass, gains ranging from 1.4 to 10.9 percentage points">
+          <div class="gains-legend"><span class="lg"><i class="before"></i>Before repair</span><span class="lg"><i class="after"></i>After repair</span></div>
+              <div class="gains-group"><div class="gains-group-name">Gemini</div>
+                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:72.5%;width:8.1%"></div><div class="gr-dot before" style="left:72.5%"></div><div class="gr-dot after" style="left:80.6%"></div></div><span class="gr-val">72.5 → 80.6 <b>+8.1pp</b></span></div>
+                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:49.5%;width:8.6%"></div><div class="gr-dot before" style="left:49.5%"></div><div class="gr-dot after" style="left:58.1%"></div></div><span class="gr-val">49.5 → 58.1 <b>+8.6pp</b></span></div>
+                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:67.9%;width:3.7%"></div><div class="gr-dot before" style="left:67.9%"></div><div class="gr-dot after" style="left:71.6%"></div></div><span class="gr-val">67.9 → 71.6 <b>+3.7pp</b></span></div>
+              </div>
+              <div class="gains-group"><div class="gains-group-name">Qwen</div>
+                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:61.5%;width:5.4%"></div><div class="gr-dot before" style="left:61.5%"></div><div class="gr-dot after" style="left:66.9%"></div></div><span class="gr-val">61.5 → 66.9 <b>+5.4pp</b></span></div>
+                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:44.1%;width:5.7%"></div><div class="gr-dot before" style="left:44.1%"></div><div class="gr-dot after" style="left:49.8%"></div></div><span class="gr-val">44.1 → 49.8 <b>+5.7pp</b></span></div>
+                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:84.0%;width:1.5%"></div><div class="gr-dot before" style="left:84.0%"></div><div class="gr-dot after" style="left:85.5%"></div></div><span class="gr-val">84.0 → 85.5 <b>+1.5pp</b></span></div>
+              </div>
+              <div class="gains-group"><div class="gains-group-name">Gemma</div>
+                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:68.8%;width:4.1%"></div><div class="gr-dot before" style="left:68.8%"></div><div class="gr-dot after" style="left:72.9%"></div></div><span class="gr-val">68.8 → 72.9 <b>+4.1pp</b></span></div>
+                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:40.9%;width:10.9%"></div><div class="gr-dot before" style="left:40.9%"></div><div class="gr-dot after" style="left:51.8%"></div></div><span class="gr-val">40.9 → 51.8 <b>+10.9pp</b></span></div>
+                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:45.5%;width:10.2%"></div><div class="gr-dot before" style="left:45.5%"></div><div class="gr-dot after" style="left:55.7%"></div></div><span class="gr-val">45.5 → 55.7 <b>+10.2pp</b></span></div>
+              </div>
+              <div class="gains-group"><div class="gains-group-name">Nemotron</div>
+                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:57.0%;width:1.4%"></div><div class="gr-dot before" style="left:57.0%"></div><div class="gr-dot after" style="left:58.4%"></div></div><span class="gr-val">57.0 → 58.4 <b>+1.4pp</b></span></div>
+                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:54.9%;width:5.0%"></div><div class="gr-dot before" style="left:54.9%"></div><div class="gr-dot after" style="left:59.9%"></div></div><span class="gr-val">54.9 → 59.9 <b>+5.0pp</b></span></div>
+                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:73.6%;width:5.4%"></div><div class="gr-dot before" style="left:73.6%"></div><div class="gr-dot after" style="left:79.0%"></div></div><span class="gr-val">73.6 → 79.0 <b>+5.4pp</b></span></div>
+              </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ TRUST ============ -->
     <section id="trust">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">04 · From hypothesis to verdict</span>
+          <span class="eyebrow">05 · From hypothesis to verdict</span>
           <h2>EvalVitals verifies a diagnosis before it becomes a repair.</h2>
           <p>A senior researcher can list ten plausible mechanisms for a failure; an agent will list fifty. Fluent explanations are easy to produce, and the loop tells you which of them hold on your data.</p>
         </div>
@@ -1013,7 +1073,7 @@
     <section id="market">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">05 · Who needs this</span>
+          <span class="eyebrow">06 · Who needs this</span>
           <h2>Anyone who ships or depends on an open-weight model.</h2>
           <p>The buyer is anyone who cannot currently answer "why did it fail, and did the fix work?"</p>
         </div>
