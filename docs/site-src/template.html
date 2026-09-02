@@ -461,29 +461,33 @@
   .vb-cap b{color:var(--text-primary);}
 
   /* ============ GAINS CHART (before/after task accuracy, by model & modality) ============
-     Paired-dot ("dumbbell") rows on a literal 0-100 scale — before and after are
-     both magnitudes, so the gap itself, not just its label, has to read as the
-     story. Brand blue marks "after" (the method's own accent); before stays
-     neutral gray. Confirmed/refuted green-red is reserved for held-out verdicts
-     elsewhere on this page, not reused here for "good news." */
+     Floating vertical bars (a range/candlestick encoding, not a from-zero bar)
+     on a shared 35-90 scale: the bar spans before->after, so its length IS the
+     gain and its position keeps the absolute score honest. A from-zero bar
+     would be misleading here (the interval matters, not the distance to 0),
+     so this is drawn as a range instead. One hue throughout (brand blue) since
+     every bar answers the same question, magnitude of gain — not identity.
+     All 12 pairs sit in one row of small multiples instead of 12 stacked rows. */
   .gains-chart{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:1.3rem 1.4rem 1.5rem;margin-top:1.8rem;}
-  .gains-legend{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.3rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.72rem;color:var(--text-secondary);}
+  .gains-legend{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.4rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.72rem;color:var(--text-secondary);}
   .gains-legend .lg{display:flex;align-items:center;gap:.5em;}
   .gains-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
   .gains-legend i.before{background:var(--border-strong);}
   .gains-legend i.after{background:var(--brand);}
-  .gains-group+.gains-group{margin-top:1.3rem;padding-top:1.2rem;border-top:1px dashed var(--border);}
-  .gains-group-name{font-family:var(--font-head);font-size:1.02rem;margin-bottom:.5rem;}
-  .gr-row{display:grid;grid-template-columns:3rem 1fr auto;align-items:center;gap:1rem;padding-block:.5rem;}
-  .gr-row .type{font-family:var(--font-mono);font-weight:700;font-size:.76rem;color:var(--text-muted);}
-  .gr-track{position:relative;height:2px;background:var(--surface-2);border-radius:2px;}
-  .gr-connect{position:absolute;top:50%;height:2px;background:var(--border-strong);transform:translateY(-50%);border-radius:2px;}
-  .gr-dot{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border-strong);}
-  .gr-dot.before{background:var(--border-strong);box-shadow:none;}
-  .gr-dot.after{background:var(--brand);box-shadow:none;}
-  .gr-val{font-family:var(--font-mono);font-size:.75rem;color:var(--text-secondary);white-space:nowrap;text-align:right;}
-  .gr-val b{color:var(--brand-ink);font-weight:600;}
-  @media (max-width:640px){ .gr-row{grid-template-columns:2.6rem 1fr;} .gr-val{grid-column:1 / -1;text-align:left;padding-left:2.6rem;margin-top:.25rem;} }
+  .gain-bars{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.6rem 1rem;}
+  .gain-group{display:flex;flex-direction:column;align-items:center;gap:.6rem;flex:1 1 160px;}
+  .gain-group-name{font-family:var(--font-head);font-size:.96rem;}
+  .gain-cols{display:flex;gap:1.1rem;align-items:flex-end;}
+  .gc{display:flex;flex-direction:column;align-items:center;gap:.4rem;}
+  .gc-gain{font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--brand-ink);white-space:nowrap;}
+  .gc-track{position:relative;width:16px;height:130px;}
+  .gc-axis{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--surface-2);transform:translateX(-50%);border-radius:2px;}
+  .gc-bar{position:absolute;left:50%;width:6px;transform:translateX(-50%);border-radius:3px;background:var(--brand);}
+  .gc-bar::before,.gc-bar::after{content:"";position:absolute;left:50%;width:7px;height:7px;border-radius:50%;transform:translateX(-50%);border:1.5px solid var(--surface);}
+  .gc-bar::before{bottom:-4px;background:var(--border-strong);}
+  .gc-bar::after{top:-4px;background:var(--brand);}
+  .gc-type{font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted);}
+  @media (max-width:760px){ .gain-bars{justify-content:center;} }
 
   /* ============ LADDER ============ */
   .ladder{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem;}
@@ -995,25 +999,39 @@
 
         <div class="gains-chart" role="img" aria-label="Before-to-after task accuracy for Gemini, Qwen, Gemma and Nemotron across LLM, VLM and ALM modalities: every pairing improved after one EvalVitals repair pass, gains ranging from 1.4 to 10.9 percentage points">
           <div class="gains-legend"><span class="lg"><i class="before"></i>Before repair</span><span class="lg"><i class="after"></i>After repair</span></div>
-              <div class="gains-group"><div class="gains-group-name">Gemini</div>
-                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:72.5%;width:8.1%"></div><div class="gr-dot before" style="left:72.5%"></div><div class="gr-dot after" style="left:80.6%"></div></div><span class="gr-val">72.5 → 80.6 <b>+8.1pp</b></span></div>
-                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:49.5%;width:8.6%"></div><div class="gr-dot before" style="left:49.5%"></div><div class="gr-dot after" style="left:58.1%"></div></div><span class="gr-val">49.5 → 58.1 <b>+8.6pp</b></span></div>
-                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:67.9%;width:3.7%"></div><div class="gr-dot before" style="left:67.9%"></div><div class="gr-dot after" style="left:71.6%"></div></div><span class="gr-val">67.9 → 71.6 <b>+3.7pp</b></span></div>
+              <div class="gain-bars">
+              <div class="gain-group">
+                <div class="gain-cols">
+                  <div class="gc" title="Gemini LLM: 72.5 to 80.6 (+8.1pp)"><span class="gc-gain">+8.1</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:88.6px;height:19.1px"></div></div><span class="gc-type">LLM</span></div>
+                  <div class="gc" title="Gemini VLM: 49.5 to 58.1 (+8.6pp)"><span class="gc-gain">+8.6</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:34.3px;height:20.3px"></div></div><span class="gc-type">VLM</span></div>
+                  <div class="gc" title="Gemini ALM: 67.9 to 71.6 (+3.7pp)"><span class="gc-gain">+3.7</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:77.8px;height:8.7px"></div></div><span class="gc-type">ALM</span></div>
+                </div>
+                <div class="gain-group-name">Gemini</div>
               </div>
-              <div class="gains-group"><div class="gains-group-name">Qwen</div>
-                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:61.5%;width:5.4%"></div><div class="gr-dot before" style="left:61.5%"></div><div class="gr-dot after" style="left:66.9%"></div></div><span class="gr-val">61.5 → 66.9 <b>+5.4pp</b></span></div>
-                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:44.1%;width:5.7%"></div><div class="gr-dot before" style="left:44.1%"></div><div class="gr-dot after" style="left:49.8%"></div></div><span class="gr-val">44.1 → 49.8 <b>+5.7pp</b></span></div>
-                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:84.0%;width:1.5%"></div><div class="gr-dot before" style="left:84.0%"></div><div class="gr-dot after" style="left:85.5%"></div></div><span class="gr-val">84.0 → 85.5 <b>+1.5pp</b></span></div>
+              <div class="gain-group">
+                <div class="gain-cols">
+                  <div class="gc" title="Qwen LLM: 61.5 to 66.9 (+5.4pp)"><span class="gc-gain">+5.4</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:62.6px;height:12.8px"></div></div><span class="gc-type">LLM</span></div>
+                  <div class="gc" title="Qwen VLM: 44.1 to 49.8 (+5.7pp)"><span class="gc-gain">+5.7</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:21.5px;height:13.5px"></div></div><span class="gc-type">VLM</span></div>
+                  <div class="gc" title="Qwen ALM: 84.0 to 85.5 (+1.5pp)"><span class="gc-gain">+1.5</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:113.6px;height:8px"></div></div><span class="gc-type">ALM</span></div>
+                </div>
+                <div class="gain-group-name">Qwen</div>
               </div>
-              <div class="gains-group"><div class="gains-group-name">Gemma</div>
-                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:68.8%;width:4.1%"></div><div class="gr-dot before" style="left:68.8%"></div><div class="gr-dot after" style="left:72.9%"></div></div><span class="gr-val">68.8 → 72.9 <b>+4.1pp</b></span></div>
-                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:40.9%;width:10.9%"></div><div class="gr-dot before" style="left:40.9%"></div><div class="gr-dot after" style="left:51.8%"></div></div><span class="gr-val">40.9 → 51.8 <b>+10.9pp</b></span></div>
-                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:45.5%;width:10.2%"></div><div class="gr-dot before" style="left:45.5%"></div><div class="gr-dot after" style="left:55.7%"></div></div><span class="gr-val">45.5 → 55.7 <b>+10.2pp</b></span></div>
+              <div class="gain-group">
+                <div class="gain-cols">
+                  <div class="gc" title="Gemma LLM: 68.8 to 72.9 (+4.1pp)"><span class="gc-gain">+4.1</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:79.9px;height:9.7px"></div></div><span class="gc-type">LLM</span></div>
+                  <div class="gc" title="Gemma VLM: 40.9 to 51.8 (+10.9pp)"><span class="gc-gain">+10.9</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:13.9px;height:25.8px"></div></div><span class="gc-type">VLM</span></div>
+                  <div class="gc" title="Gemma ALM: 45.5 to 55.7 (+10.2pp)"><span class="gc-gain">+10.2</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:24.8px;height:24.1px"></div></div><span class="gc-type">ALM</span></div>
+                </div>
+                <div class="gain-group-name">Gemma</div>
               </div>
-              <div class="gains-group"><div class="gains-group-name">Nemotron</div>
-                <div class="gr-row"><span class="type">LLM</span><div class="gr-track"><div class="gr-connect" style="left:57.0%;width:1.4%"></div><div class="gr-dot before" style="left:57.0%"></div><div class="gr-dot after" style="left:58.4%"></div></div><span class="gr-val">57.0 → 58.4 <b>+1.4pp</b></span></div>
-                <div class="gr-row"><span class="type">VLM</span><div class="gr-track"><div class="gr-connect" style="left:54.9%;width:5.0%"></div><div class="gr-dot before" style="left:54.9%"></div><div class="gr-dot after" style="left:59.9%"></div></div><span class="gr-val">54.9 → 59.9 <b>+5.0pp</b></span></div>
-                <div class="gr-row"><span class="type">ALM</span><div class="gr-track"><div class="gr-connect" style="left:73.6%;width:5.4%"></div><div class="gr-dot before" style="left:73.6%"></div><div class="gr-dot after" style="left:79.0%"></div></div><span class="gr-val">73.6 → 79.0 <b>+5.4pp</b></span></div>
+              <div class="gain-group">
+                <div class="gain-cols">
+                  <div class="gc" title="Nemotron LLM: 57.0 to 58.4 (+1.4pp)"><span class="gc-gain">+1.4</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:49.7px;height:8px"></div></div><span class="gc-type">LLM</span></div>
+                  <div class="gc" title="Nemotron VLM: 54.9 to 59.9 (+5.0pp)"><span class="gc-gain">+5.0</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:47.0px;height:11.8px"></div></div><span class="gc-type">VLM</span></div>
+                  <div class="gc" title="Nemotron ALM: 73.6 to 79.0 (+5.4pp)"><span class="gc-gain">+5.4</span><div class="gc-track"><div class="gc-axis"></div><div class="gc-bar" style="bottom:91.2px;height:12.8px"></div></div><span class="gc-type">ALM</span></div>
+                </div>
+                <div class="gain-group-name">Nemotron</div>
+              </div>
               </div>
         </div>
       </div>
