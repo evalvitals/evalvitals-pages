@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the EvalVitals landing page.
+"""Build the EvalRx landing page.
 
 Produces docs/index.html: a complete, standalone HTML5 document for GitHub
 Pages, with fonts and OFL license texts referenced as external files under
@@ -24,9 +24,9 @@ SRC = Path(__file__).parent
 DOCS = SRC.parent
 
 SITE_URL = "https://evalvitals.github.io/evalvitals-pages/"
-TITLE = "EvalVitals — diagnose why a model fails, then verify the fix"
+TITLE = "EvalRx — diagnose why a model fails, then verify the fix"
 DESCRIPTION = (
-    "EvalVitals is a self-improving loop that probes an open-weight model, "
+    "EvalRx is a self-improving loop that probes an open-weight model, "
     "diagnoses the mechanism behind its failures, verifies the diagnosis on "
     "held-out cases, and builds a repair validated against the unmodified "
     "baseline."
@@ -133,7 +133,7 @@ def build_head() -> str:
 <link rel="icon" href="{FAVICON}">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="EvalVitals">
+<meta property="og:site_name" content="EvalRx">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{og_desc}">
 <meta property="og:url" content="{SITE_URL}">

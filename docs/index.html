@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EvalVitals — diagnose why a model fails, then verify the fix</title>
-<meta name="description" content="EvalVitals is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
+<title>EvalRx — diagnose why a model fails, then verify the fix</title>
+<meta name="description" content="EvalRx is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
 <meta name="robots" content="index, follow">
 <meta name="keywords" content="LLM evaluation, failure analysis, model diagnosis, interpretability, VLM, hallucination detection, model repair, open-weight models, evalvitals">
 <link rel="canonical" href="https://evalvitals.github.io/evalvitals-pages/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="EvalVitals">
-<meta property="og:title" content="EvalVitals — diagnose why a model fails, then verify the fix">
-<meta property="og:description" content="EvalVitals is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
+<meta property="og:site_name" content="EvalRx">
+<meta property="og:title" content="EvalRx — diagnose why a model fails, then verify the fix">
+<meta property="og:description" content="EvalRx is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
 <meta property="og:url" content="https://evalvitals.github.io/evalvitals-pages/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EvalVitals — diagnose why a model fails, then verify the fix">
-<meta name="twitter:description" content="EvalVitals is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
+<meta name="twitter:title" content="EvalRx — diagnose why a model fails, then verify the fix">
+<meta name="twitter:description" content="EvalRx is a self-improving loop that probes an open-weight model, diagnoses the mechanism behind its failures, verifies the diagnosis on held-out cases, and builds a repair validated against the unmodified baseline.">
 </head>
 <body>
 <style>
@@ -562,7 +562,7 @@
 
   <header class="nav">
     <div class="wrap">
-      <a class="brand" href="#top">Eval<span>Vitals</span></a>
+      <a class="brand" href="#top">Eval<span>Rx</span></a>
       <nav class="navlinks">
         <a href="#loop">Loop</a>
         <a href="#ladder">Ladder</a>
@@ -585,7 +585,7 @@
         <div>
           <span class="eyebrow">Failure diagnosis for open-weight models</span>
           <h1>A self-improving loop that repairs open models automatically — and verifies every fix.</h1>
-          <p class="hero-lead">An eval score is a temperature reading. EvalVitals runs the lab: probe failures, form mechanisms, test them on unseen cases, and climb the repair ladder. Only a held-out win updates the model; the healthier model becomes the next subject.</p>
+          <p class="hero-lead">An eval score is a temperature reading. EvalRx runs the lab: probe failures, form mechanisms, test them on unseen cases, and climb the repair ladder. Only a held-out win updates the model; the healthier model becomes the next subject.</p>
           <div class="ctas">
             <a class="btn btn-primary" href="https://github.com/evalvitals/evalvitals#two-runs-you-can-read-right-now" target="_blank" rel="noopener">Read a real run</a>
             <a class="btn" href="https://evalvitals.github.io/evalvitals/" target="_blank" rel="noopener">Documentation</a>
@@ -636,7 +636,7 @@
 
         <div class="diagram-wrap">
           <svg class="diagram" viewBox="0 0 968 190" role="img" aria-labelledby="loopTitle loopDesc">
-            <title id="loopTitle">The EvalVitals investigation loop</title>
+            <title id="loopTitle">The EvalRx investigation loop</title>
             <desc id="loopDesc">Probe, Explore, Diagnose, Verify and Repair run in sequence and end in a validated fix. Two optional loops: a refuted hypothesis returns to Probe, and a repair that fails against the baseline tries the next tier within the ceiling you set.</desc>
             <defs>
               <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--border-strong)"/></marker>
@@ -893,7 +893,7 @@
               <span class="term-title">simulated run</span>
               <button class="term-replay" type="button" id="replay">Replay</button>
             </div>
-            <pre class="term-body" id="term" aria-label="Simulated EvalVitals run, escalating through the repair ladder"><span class="l" data-t="90"><span class="c-dim">$</span> <span class="c-cmd">evalvitals investigate</span> qwen3-vl-8b-instruct <span class="c-dim">\</span></span><span class="l" data-t="260">      <span class="c-dim">--probe</span> pope-adversarial <span class="c-dim">--holdout</span> 0.4 <span class="c-dim">--max-tier</span> L4</span><span class="l" data-t="120"> </span><span class="l" data-t="340"><span class="c-key">M1</span>  probe          <span class="c-dim">············</span> 606 cases · <span class="c-no">126 fail</span> (20.8%)</span><span class="l" data-t="340"><span class="c-key">M2</span>  explore        <span class="c-dim">············</span> 23 figures · 4 candidate signals</span><span class="l" data-t="340"><span class="c-key">M3</span>  diagnose       <span class="c-dim">············</span> 2 falsifiable hypotheses</span><span class="l" data-t="380"><span class="c-key">M4</span>  verify         <span class="c-dim">············</span> held-out n=242 · e-BH α=0.05</span><span class="l" data-t="200">    <span class="c-ok">✓</span> peaked_attention  <span class="c-dim">stat + protocol: SUPPORTED</span>  CI +0.360..+0.589</span><span class="l" data-t="120">    <span class="c-no">✗</span> top1_share_high   <span class="c-dim">refuted</span></span><span class="l" data-t="120">    <span class="c-no">✗</span> peripheral_attn   <span class="c-dim">refuted</span></span><span class="l" data-t="200"> </span><span class="l" data-t="300"><span class="c-key">M5</span>  intervene      <span class="c-dim">············</span> peaked_attention Δ +14.2pp <span class="c-dim">(causal, not yet a fix)</span></span><span class="l" data-t="320">    <span class="c-dim">└</span> repair <span class="c-dim">— climbing the ladder, ceiling L4</span></span><span class="l" data-t="420">    <span class="c-dim">L1 </span> prompt rewrite        <span class="c-no">✗</span> +0.4pp  <span class="c-dim">p=0.41 vs baseline</span></span><span class="l" data-t="420">    <span class="c-dim">L2 </span> attention-guided crop <span class="c-no">✗</span> +1.2pp  <span class="c-dim">p=0.19 vs baseline</span></span><span class="l" data-t="420">    <span class="c-dim">L3b</span> attention reweight    <span class="c-no">✗</span> +1.1pp  <span class="c-dim">p=0.22 vs baseline</span></span><span class="l" data-t="300">        <span class="c-warn">all candidates exhausted below L4</span></span><span class="l" data-t="180"> </span><span class="l" data-t="380"><span class="c-warn">↑</span>  escalate <span class="c-dim">→</span> <span class="c-key">L4 parameter space</span></span><span class="l" data-t="300">    fine-tune recipe written <span class="c-dim">→</span> finetune_spec.json</span><span class="l" data-t="160">      base     Qwen3-VL-8B-Instruct <span class="c-dim">(open weights)</span></span><span class="l" data-t="160">      data     1,204 pairs drawn from the confirmed mode</span><span class="l" data-t="160">      method   LoRA r=16 · 2 epochs · bf16</span><span class="l" data-t="160">      re-test  242 held-out cases vs unmodified baseline</span><span class="l" data-t="240"> </span><span class="l" data-t="220"><span class="c-key">↺</span>  L4 executor available <span class="c-dim">—</span> plain LoRA on the LLM ships today; this walkthrough continues below as a projection.</span><span class="l" data-t="320"> </span><span class="l" data-t="480"><span class="c-proj">┄┄┄ below this line: projected on target hardware, not measured ┄┄┄</span></span><span class="l" data-t="200"> </span><span class="l" data-t="300"><span class="c-key">P?</span>  strategy selection <span class="c-dim">— confirmed mode: over-concentrated attention</span></span><span class="l" data-t="200">    <span class="c-ok">▸</span> P1 attention-grounding LoRA  <span class="c-dim">targets the measured mechanism</span></span><span class="l" data-t="200">    <span class="c-ok">▸</span> P2 contrastive DPO           <span class="c-dim">hallucinated yes / correct no</span></span><span class="l" data-t="160">    <span class="c-dim">· P3 counterfactual SFT        held in reserve</span></span><span class="l" data-t="260">    <span class="c-dim">· P4 full fine-tune            held in reserve</span></span><span class="l" data-t="200"> </span><span class="l" data-t="320"><span class="c-key">$$</span>  cost estimate <span class="c-dim">— 8 × H200 SXM @ $2.30/GPU-h</span></span><span class="l" data-t="180">    P1  LoRA        0.8 h    <span class="c-proj">$14.72</span></span><span class="l" data-t="180">    P2  DPO         2.4 h    <span class="c-proj">$44.16</span></span><span class="l" data-t="180">    re-test         0.3 h    <span class="c-proj">$5.52</span></span><span class="l" data-t="120">    <span class="c-dim">──────────────────────────────</span></span><span class="l" data-t="380">    total           3.5 h    <span class="c-proj">$64.40</span></span><span class="l" data-t="220"> </span><span class="l" data-t="320"><span class="c-key">▶</span>  projected run <span class="c-dim">— 8 × H200, bf16, grad-ckpt</span></span><span class="l" data-t="260">    <span class="c-dim">P1</span>  step  200/1200  loss 0.842  <span class="c-dim">▓▓▒░░░░░░░</span>  gpu 91%</span><span class="l" data-t="260">    <span class="c-dim">P1</span>  step  700/1200  loss 0.517  <span class="c-dim">▓▓▓▓▓▓░░░░</span>  gpu 93%</span><span class="l" data-t="300">    <span class="c-dim">P1</span>  step 1200/1200  loss 0.388  <span class="c-dim">▓▓▓▓▓▓▓▓▓▓</span>  <span class="c-ok">converged</span></span><span class="l" data-t="340">    <span class="c-dim">P2</span>  step  900/900   loss 0.204  <span class="c-dim">▓▓▓▓▓▓▓▓▓▓</span>  <span class="c-ok">converged</span></span><span class="l" data-t="220"> </span><span class="l" data-t="340"><span class="c-key">↺</span>  re-test <span class="c-dim">— 242 held-out cases vs unmodified baseline</span></span><span class="l" data-t="260">    hallucination rate  34.4% <span class="c-dim">→</span> <span class="c-ok">21.9%</span>   <span class="c-ok">Δ −12.5pp</span></span><span class="l" data-t="240">    McNemar paired      <span class="c-ok">p = 0.0007</span>  <span class="c-dim">repair holds</span></span><span class="l" data-t="240">    no-free-lunch check <span class="c-dim">present-object detection 100% → 99.6%</span></span><span class="l" data-t="240"> </span><span class="l" data-t="140"><span class="c-proj">   Figures above are a projection of what one escalated</span></span><span class="l" data-t="140"><span class="c-proj">   investigation would cost and produce on this ladder path. Running</span></span><span class="l" data-t="0"><span class="c-proj">   it end-to-end through today's generic LoRA executor is the gap.</span></span></pre>
+            <pre class="term-body" id="term" aria-label="Simulated EvalRx run, escalating through the repair ladder"><span class="l" data-t="90"><span class="c-dim">$</span> <span class="c-cmd">evalvitals investigate</span> qwen3-vl-8b-instruct <span class="c-dim">\</span></span><span class="l" data-t="260">      <span class="c-dim">--probe</span> pope-adversarial <span class="c-dim">--holdout</span> 0.4 <span class="c-dim">--max-tier</span> L4</span><span class="l" data-t="120"> </span><span class="l" data-t="340"><span class="c-key">M1</span>  probe          <span class="c-dim">············</span> 606 cases · <span class="c-no">126 fail</span> (20.8%)</span><span class="l" data-t="340"><span class="c-key">M2</span>  explore        <span class="c-dim">············</span> 23 figures · 4 candidate signals</span><span class="l" data-t="340"><span class="c-key">M3</span>  diagnose       <span class="c-dim">············</span> 2 falsifiable hypotheses</span><span class="l" data-t="380"><span class="c-key">M4</span>  verify         <span class="c-dim">············</span> held-out n=242 · e-BH α=0.05</span><span class="l" data-t="200">    <span class="c-ok">✓</span> peaked_attention  <span class="c-dim">stat + protocol: SUPPORTED</span>  CI +0.360..+0.589</span><span class="l" data-t="120">    <span class="c-no">✗</span> top1_share_high   <span class="c-dim">refuted</span></span><span class="l" data-t="120">    <span class="c-no">✗</span> peripheral_attn   <span class="c-dim">refuted</span></span><span class="l" data-t="200"> </span><span class="l" data-t="300"><span class="c-key">M5</span>  intervene      <span class="c-dim">············</span> peaked_attention Δ +14.2pp <span class="c-dim">(causal, not yet a fix)</span></span><span class="l" data-t="320">    <span class="c-dim">└</span> repair <span class="c-dim">— climbing the ladder, ceiling L4</span></span><span class="l" data-t="420">    <span class="c-dim">L1 </span> prompt rewrite        <span class="c-no">✗</span> +0.4pp  <span class="c-dim">p=0.41 vs baseline</span></span><span class="l" data-t="420">    <span class="c-dim">L2 </span> attention-guided crop <span class="c-no">✗</span> +1.2pp  <span class="c-dim">p=0.19 vs baseline</span></span><span class="l" data-t="420">    <span class="c-dim">L3b</span> attention reweight    <span class="c-no">✗</span> +1.1pp  <span class="c-dim">p=0.22 vs baseline</span></span><span class="l" data-t="300">        <span class="c-warn">all candidates exhausted below L4</span></span><span class="l" data-t="180"> </span><span class="l" data-t="380"><span class="c-warn">↑</span>  escalate <span class="c-dim">→</span> <span class="c-key">L4 parameter space</span></span><span class="l" data-t="300">    fine-tune recipe written <span class="c-dim">→</span> finetune_spec.json</span><span class="l" data-t="160">      base     Qwen3-VL-8B-Instruct <span class="c-dim">(open weights)</span></span><span class="l" data-t="160">      data     1,204 pairs drawn from the confirmed mode</span><span class="l" data-t="160">      method   LoRA r=16 · 2 epochs · bf16</span><span class="l" data-t="160">      re-test  242 held-out cases vs unmodified baseline</span><span class="l" data-t="240"> </span><span class="l" data-t="220"><span class="c-key">↺</span>  L4 executor available <span class="c-dim">—</span> plain LoRA on the LLM ships today; this walkthrough continues below as a projection.</span><span class="l" data-t="320"> </span><span class="l" data-t="480"><span class="c-proj">┄┄┄ below this line: projected on target hardware, not measured ┄┄┄</span></span><span class="l" data-t="200"> </span><span class="l" data-t="300"><span class="c-key">P?</span>  strategy selection <span class="c-dim">— confirmed mode: over-concentrated attention</span></span><span class="l" data-t="200">    <span class="c-ok">▸</span> P1 attention-grounding LoRA  <span class="c-dim">targets the measured mechanism</span></span><span class="l" data-t="200">    <span class="c-ok">▸</span> P2 contrastive DPO           <span class="c-dim">hallucinated yes / correct no</span></span><span class="l" data-t="160">    <span class="c-dim">· P3 counterfactual SFT        held in reserve</span></span><span class="l" data-t="260">    <span class="c-dim">· P4 full fine-tune            held in reserve</span></span><span class="l" data-t="200"> </span><span class="l" data-t="320"><span class="c-key">$$</span>  cost estimate <span class="c-dim">— 8 × H200 SXM @ $2.30/GPU-h</span></span><span class="l" data-t="180">    P1  LoRA        0.8 h    <span class="c-proj">$14.72</span></span><span class="l" data-t="180">    P2  DPO         2.4 h    <span class="c-proj">$44.16</span></span><span class="l" data-t="180">    re-test         0.3 h    <span class="c-proj">$5.52</span></span><span class="l" data-t="120">    <span class="c-dim">──────────────────────────────</span></span><span class="l" data-t="380">    total           3.5 h    <span class="c-proj">$64.40</span></span><span class="l" data-t="220"> </span><span class="l" data-t="320"><span class="c-key">▶</span>  projected run <span class="c-dim">— 8 × H200, bf16, grad-ckpt</span></span><span class="l" data-t="260">    <span class="c-dim">P1</span>  step  200/1200  loss 0.842  <span class="c-dim">▓▓▒░░░░░░░</span>  gpu 91%</span><span class="l" data-t="260">    <span class="c-dim">P1</span>  step  700/1200  loss 0.517  <span class="c-dim">▓▓▓▓▓▓░░░░</span>  gpu 93%</span><span class="l" data-t="300">    <span class="c-dim">P1</span>  step 1200/1200  loss 0.388  <span class="c-dim">▓▓▓▓▓▓▓▓▓▓</span>  <span class="c-ok">converged</span></span><span class="l" data-t="340">    <span class="c-dim">P2</span>  step  900/900   loss 0.204  <span class="c-dim">▓▓▓▓▓▓▓▓▓▓</span>  <span class="c-ok">converged</span></span><span class="l" data-t="220"> </span><span class="l" data-t="340"><span class="c-key">↺</span>  re-test <span class="c-dim">— 242 held-out cases vs unmodified baseline</span></span><span class="l" data-t="260">    hallucination rate  34.4% <span class="c-dim">→</span> <span class="c-ok">21.9%</span>   <span class="c-ok">Δ −12.5pp</span></span><span class="l" data-t="240">    McNemar paired      <span class="c-ok">p = 0.0007</span>  <span class="c-dim">repair holds</span></span><span class="l" data-t="240">    no-free-lunch check <span class="c-dim">present-object detection 100% → 99.6%</span></span><span class="l" data-t="240"> </span><span class="l" data-t="140"><span class="c-proj">   Figures above are a projection of what one escalated</span></span><span class="l" data-t="140"><span class="c-proj">   investigation would cost and produce on this ladder path. Running</span></span><span class="l" data-t="0"><span class="c-proj">   it end-to-end through today's generic LoRA executor is the gap.</span></span></pre>
           </div>
           <figcaption>Every line here is real content in the page markup — the script only staggers when each line becomes visible.</figcaption>
         </figure>
@@ -1017,11 +1017,11 @@
         <div class="section-head">
           <span class="eyebrow">04 · Proven across model families</span>
           <h2>Every model gains. Every modality.</h2>
-          <p>Task accuracy before and after one full EvalVitals repair pass, run against four current model families across language, vision and audio inputs. Every cell moved the right direction — from +1.4pp on the smallest gain to +10.9pp on the largest.</p>
+          <p>Task accuracy before and after one full EvalRx repair pass, run against four current model families across language, vision and audio inputs. Every cell moved the right direction — from +1.4pp on the smallest gain to +10.9pp on the largest.</p>
         </div>
 
-        <div class="gains-chart" role="img" aria-label="Before-to-after task accuracy for Gemini, Qwen, Gemma and Nemotron across LLM, VLM and ALM modalities: every pairing improved after one EvalVitals repair pass, gains ranging from 1.4 to 10.9 percentage points">
-          <div class="gains-legend"><span class="lg"><i class="before"></i>Baseline</span><span class="lg"><i class="after"></i>After EvalVitals</span></div>
+        <div class="gains-chart" role="img" aria-label="Before-to-after task accuracy for Gemini, Qwen, Gemma and Nemotron across LLM, VLM and ALM modalities: every pairing improved after one EvalRx repair pass, gains ranging from 1.4 to 10.9 percentage points">
+          <div class="gains-legend"><span class="lg"><i class="before"></i>Baseline</span><span class="lg"><i class="after"></i>After EvalRx</span></div>
           <div class="gains-scroll">
             <svg class="gains" viewBox="0 30 820 226" aria-hidden="true">
               <line class="axis" x1="66" y1="55" x2="66" y2="195"/>
@@ -1165,7 +1165,7 @@
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">05 · From hypothesis to verdict</span>
-          <h2>EvalVitals verifies a diagnosis before it becomes a repair.</h2>
+          <h2>EvalRx verifies a diagnosis before it becomes a repair.</h2>
           <p>A senior researcher can list ten plausible mechanisms for a failure; an agent will list fifty. Fluent explanations are easy to produce, and the loop tells you which of them hold on your data.</p>
         </div>
 
@@ -1197,7 +1197,7 @@
                 <td class="basis-weak"><b>The budget</b> — whichever candidates you could afford to test</td>
               </tr>
               <tr class="us">
-                <td>EvalVitals</td>
+                <td>EvalRx</td>
                 <td>Drawn from published repair results and the memory of past runs</td>
                 <td>Cross-validated while exploring, then decided once on a separate sealed set</td>
                 <td class="basis-strong"><b>The data</b> — a measured effect on reserved cases, reproducible from the run log</td>
@@ -1236,7 +1236,7 @@
         <div class="section-head">
           <span class="eyebrow">Getting started</span>
           <h2>Point it at your eval logs.</h2>
-          <p>The core install stays lightweight — no Torch required. EvalVitals writes an auditable analysis bundle instead of returning only prose.</p>
+          <p>The core install stays lightweight — no Torch required. EvalRx writes an auditable analysis bundle instead of returning only prose.</p>
         </div>
         <div class="qs-steps">
           <div>
@@ -1277,7 +1277,7 @@
   <footer>
     <div class="wrap">
       <div class="foot-grid">
-        <a class="brand" href="#top">Eval<span>Vitals</span></a>
+        <a class="brand" href="#top">Eval<span>Rx</span></a>
         <div class="foot-links">
           <a href="https://evalvitals.github.io/evalvitals/" target="_blank" rel="noopener">Docs</a>
           <a href="https://pypi.org/project/evalvitals/" target="_blank" rel="noopener">PyPI</a>
@@ -1286,7 +1286,7 @@
           <a href="https://github.com/evalvitals/evalvitals/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
         </div>
       </div>
-      <div class="foot-bottom">EvalVitals — model health for open-weight models: diagnosed, repaired, verified. CC0-1.0.</div>
+      <div class="foot-bottom">EvalRx — model health for open-weight models: diagnosed, repaired, verified. CC0-1.0.</div>
     </div>
   </footer>
 </div>

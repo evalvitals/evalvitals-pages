@@ -1,6 +1,6 @@
 # evalvitals-pages
 
-The EvalVitals landing page. Live at
+The EvalRx landing page. Live at
 **https://evalvitals.github.io/evalvitals-pages/**
 
 ## Layout
